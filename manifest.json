@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+
+  "name": "Fallen London",
+  "description": "Unofficial extension to Fallen London by Failbetter Games",
+  "version": "1.0",
+
+  "permissions": [
+    "http://*.fallenlondon.storynexus.com/",
+	"tabs",
+	"alarms",
+    "webNavigation"
+  ],
+  
+  "background": {
+    "persistent": false,
+    "page": "background.html"
+  },
+  
+  "browser_action": {
+    "default_icon": {
+      "19": "hat-19.png",
+      "38": "hat-38.png"
+    }
+    //,"default_popup": "popup.html"
+  }
+}
