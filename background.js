@@ -2,7 +2,8 @@
 var oldChromeVersion = !chrome.runtime;
 var requestTimerId;
 var requestTimeout = 1000 * 2;  // 2 seconds
-var delay = 10;
+var delay = localStorage["delay_time"];
+if (!delay) delay = 5;
 
 function isGameUrl(url) {
 	return url.indexOf(getGameUrl()) == 0;
@@ -32,6 +33,7 @@ function onInit() {
 }
 
 function scheduleRequest() {
+  delay = localStorage["delay_time"];
   console.log('scheduleRequest');
   console.log('Scheduling for: ' + delay);
 
