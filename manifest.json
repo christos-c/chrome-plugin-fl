@@ -17,13 +17,17 @@
     "page": "background.html"
   },
   
+  "icons": {
+	"48": "hat-logo-48.png"
+  },
+  
   "options_page": "options.html",
   
   "browser_action": {
-    "default_icon": {
-      "19": "hat-19.png",
-      "38": "hat-38.png"
-    }
+    //"default_icon": {
+    //  "19": "hat-19.png",
+    //  "38": "hat-38.png"
+    //}
     //,"default_popup": "popup.html"
   }
 }

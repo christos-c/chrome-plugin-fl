@@ -2,13 +2,20 @@
 function save_options() {
   var delay = document.getElementById("delay").value;
   localStorage["delay_time"] = delay;
-
-  // Update status to let user know options were saved.
-  var status = document.getElementById("status");
-  status.innerHTML = "Options Saved.";
+  //document.getElementById('shim').style.display=
+  document.getElementById('msgbx').style.display ="block";
+  //To hide
+  //document.getElementById('shim').style.display=document.getElementById('msgbx').style.display ="none";
   setTimeout(function() {
-    status.innerHTML = "";
-  }, 750);
+	//document.getElementById('shim').style.display=
+	document.getElementById('msgbx').style.display ="none";
+  }, 1250);
+  // Update status to let user know options were saved.
+  //var status = document.getElementById("status");
+  //status.innerHTML = "Options Saved.";
+  //setTimeout(function() {
+  //  status.innerHTML = "";
+  //}, 1500);
 }
 
 // Restores select box state to saved value from localStorage.

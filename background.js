@@ -58,8 +58,9 @@ function startRequest(params) {
   if (params && params.scheduleRequest) scheduleRequest();
 
   getActionCount(
-    function(count) {
-		updateIcon(count);
+    function(response) {
+		console.log('Request success');
+		updateIcon(response);
     },
 	function() {
 		console.log('Error during request');
@@ -86,10 +87,10 @@ function getActionCount(onSuccess, onError) {
 		xhr.abort();  // synchronously calls onreadystatechange
 	}, requestTimeout);
 
-	function handleSuccess(count) {
+	function handleSuccess(response) {
 		window.clearTimeout(abortTimerId);
 		if (onSuccess)
-			onSuccess(count);
+			onSuccess(response);
 	}
 
 	var invokedErrorCallback = false;
@@ -103,9 +104,8 @@ function getActionCount(onSuccess, onError) {
 	xhr.onload = function() {
 		if (xhr.responseText) {
 			var response = xhr.responseText;
-			var actions = response.match('<span id="infoBarCurrentActions">([0-9]*)?</span>')[1];
-			if (actions) {
-				handleSuccess(actions);
+			if (response) {
+				handleSuccess(response);
 				return;
 			}
 		}
@@ -119,12 +119,23 @@ function getActionCount(onSuccess, onError) {
 	xhr.send();
 }
 
-function updateIcon(count) {
-	console.log('Actions: ' + count);
-	if (count == 0)
+function updateIcon(response) {
+	if (!response || !response.match('<span id="infoBarCurrentActions">([0-9]*)?</span>')) {
+		//Need to login
+		chrome.browserAction.setTitle({title: 'Fallen London: Not logged in! Click here.'});
 		chrome.browserAction.setBadgeText({text: ''});
-	else
-	chrome.browserAction.setBadgeText({text: count});
+		chrome.browserAction.setIcon({path: 'hat-logo-inactive-19.png'});
+	}
+	else {
+		var count = response.match('<span id="infoBarCurrentActions">([0-9]*)?</span>')[1];
+		console.log('Actions: ' + count);
+		chrome.browserAction.setTitle({title: 'Fallen London: '+count+' available actions.'});
+		chrome.browserAction.setIcon({path: 'hat-logo-active-19.png'});
+		if (count == 0)
+			chrome.browserAction.setBadgeText({text: ''});
+		else
+			chrome.browserAction.setBadgeText({text: count});
+	}
 }
 
 function onAlarm(alarm) {

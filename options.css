@@ -1,0 +1,39 @@
+body {
+	font-family: 'Alef', sans-serif;
+	margin: 20px 30px;
+}
+
+#header {
+	font-size: large;
+}
+
+#subHeader {
+	font-size: small;
+	margin-bottom: 20px;
+	padding-left: 50px;
+}
+
+#msgbx {
+	position: absolute;
+	left: 50%;
+	top: 0%;
+	height: 30px;
+	width: 150px;
+	margin-left: -75px;
+	background: #FFE200;
+	text-align: center;
+	display: none;
+}
+.optButton {
+	background: #eee;
+	border: 0;
+	width: 90px;
+	height: 30px;
+	cursor: hand;
+}
+
+#footer {
+	position:absolute; 
+	bottom:0;
+	margin-bottom: 20px;
+}

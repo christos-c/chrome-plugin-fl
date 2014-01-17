@@ -1,14 +1,27 @@
 <html>
-<head><title>Fallen London extension Options</title></head>
+<head>
+	<title>Fallen London extension options</title>
+	<link rel="stylesheet" type="text/css" href="options.css" />
+	<link href='http://fonts.googleapis.com/css?family=Alef' rel='stylesheet' type='text/css'>
+</head>
 
 <body>
-
-Set refresh time:
-<input id="delay" type="text"></input>
-
-<br>
-<div id="status"></div>
-<button id="save">Save</button>
+	<div id="msgbx">Options saved</div>
+	<img style="float:left" src="hat-logo.png"/><div id="header">Fallen London extension for Chrome</div>
+	<div id="subHeader">Checks available actions</div>
+	<hr/>
+	<label for="refresh">Refresh actions counter</label><br>
+	<button class="optButton" name="refresh" id="refresh">Refresh</button>
+	<br><br>
+	<label for="delay">Set refresh time (minutes):</label>
+	<input id="delay" type="text" name="delay" size="2"></input>
+	<br>
+	<button class="optButton" id="save">Save</button>
+	
+	<div id="footer">
+		For questions/support please contact:<br>
+		<a href="mailto:christos.c2009@gmail.com">Christos Christodoulopoulos</a>
+	</div>
 </body>
 
 <script src="options.js"></script>
