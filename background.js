@@ -44,11 +44,6 @@ function onInit() {
 	console.log('onInit');
 	localStorage.requestFailureCount = 0;  // used for exponential backoff
 	startRequest({scheduleRequest:true});
-	if (!oldChromeVersion) {
-		// TODO(mpcomplete): We should be able to remove this now, but leaving it
-		// for a little while just to be sure the refresh alarm is working nicely.
-		chrome.alarms.create('watchdog', {periodInMinutes:5});
-	}
 }
 
 function scheduleRequest() {
@@ -91,13 +86,7 @@ function startRequest(params) {
 
 function onAlarm(alarm) {
 	console.log('Got alarm', alarm);
-	// |alarm| can be undefined because onAlarm also gets called from
-	// window.setTimeout on old chrome versions.
-	if (alarm && alarm.name == 'watchdog') {
-		onWatchdog();
-	} else {
-		startRequest({scheduleRequest:true});
-	}
+	startRequest({scheduleRequest:true});
 }
 
 function onWatchdog() {
