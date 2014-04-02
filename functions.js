@@ -38,7 +38,7 @@ var Common = (function() {
 		},
 
 		isGameUrl:function(url) {
-			return url.indexOf(Common.getGameUrl()) == 0;
+			return url.indexOf('http://fallenlondon.storynexus.com/Gap/Load?content=%2fStorylet') == 0;
 		},
 
 		getGameUrl:function() {
